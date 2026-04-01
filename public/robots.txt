@@ -1,0 +1,7 @@
+# robots.txt for 星联互动官网
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.xlhd.info/sitemap.xml

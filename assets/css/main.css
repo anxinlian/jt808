@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    /* 背景色 - 浅灰色 #f8fafc */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    /* 卡片 - 白色背景 */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    /* 主色 - 深蓝色 #1e3a8a */
+    --primary: 221 83% 33%;
+    --primary-foreground: 0 0% 100%;
+    /* 辅助色 - 科技蓝 #3b82f6 */
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 0 0% 100%;
+    /* 柔和背景色 */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    /* 强调色 - 橙色 #f97316 */
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 33%;
+    --chart-1: 221 83% 33%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 25 95% 53%;
+    --chart-4: 173 58% 39%;
+    --chart-5: 43 74% 66%;
+    --sidebar-background: 221 83% 33%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 221 83% 28%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 221 83% 25%;
+    --sidebar-ring: 217 91% 60%;
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --info: 217 91% 60%;
+    --education-blue: 217 91% 60%;
+    --education-green: 142 76% 36%;
+    --gradient-primary: linear-gradient(135deg, hsl(221, 83%, 33%) 0%, hsl(217, 91%, 60%) 100%);
+    --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    --gradient-background: linear-gradient(135deg, hsl(210, 40%, 98%) 0%, hsl(210, 40%, 95%) 100%);
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+    --chart-1: 217 91% 60%;
+    --chart-2: 25 95% 53%;
+    --chart-3: 142 76% 36%;
+    --chart-4: 173 58% 39%;
+    --chart-5: 43 74% 66%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* 优化的阴影效果 */
+  .shadow-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .shadow-card-hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  /* 渐变背景 */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(221 83% 33%), hsl(217 91% 60%));
+  }
+
+  /* 平滑过渡 */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* 卡片悬停效果 */
+  .card-hover {
+    @apply transition-smooth hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  /* 按钮和菜单悬停效果优化 */
+  .hover-muted {
+    @apply transition-smooth hover:bg-muted/80;
+  }
+
+  /* 移动端布局优化 */
+  .mobile-card {
+    @apply shadow-card border border-border/50 bg-gradient-to-br from-card to-muted/30;
+  }
+
+  .mobile-section-padding {
+    @apply py-12 xl:py-16;
+  }
+
+  .mobile-card-spacing {
+    @apply space-y-4 xl:space-y-6;
+  }
+
+  .mobile-text-enhance {
+    @apply leading-relaxed;
+  }
+
+  /* 移动端渐变装饰 */
+  .mobile-gradient-accent {
+    position: relative;
+  }
+
+  .mobile-gradient-accent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(221 83% 33%), hsl(217 91% 60%), hsl(25 95% 53%));
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  /* 移动端图标增强 */
+  .mobile-icon-wrapper {
+    @apply flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 transition-smooth;
+  }
+
+  /* 移动端标题装饰 */
+  .mobile-title-accent {
+    @apply relative pl-4;
+  }
+
+  .mobile-title-accent::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: linear-gradient(180deg, hsl(221 83% 33%), hsl(217 91% 60%));
+    border-radius: 2px;
+  }
+
+  /* 移动端按钮增强 */
+  .mobile-button-enhance {
+    @apply shadow-md hover:shadow-lg active:scale-95 transition-all;
+  }
+
+  /* 移动端分隔线 */
+  .mobile-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-border to-transparent my-8;
+  }
+
+  /* 移动端标题下划线 */
+  .mobile-heading-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .mobile-heading-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(221 83% 33%), hsl(217 91% 60%));
+    border-radius: 2px;
+  }
+}
