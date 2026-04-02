@@ -92,7 +92,7 @@ const navItems = [
   { name: '系统介绍', path: '/system' },
   { name: '产品版本', path: '/product' },
   { name: '项目案例', path: '/cases' },
-  { name: '动态资讯', path: '/news' },
+  { name: '文章资讯', path: '/news' },
   { name: '关于我们', path: '/about' },
 ]
 </script>

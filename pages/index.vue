@@ -243,6 +243,83 @@
       </div>
     </section>
 
+    <!-- 精选文章 -->
+    <section class="py-16 xl:py-24 bg-muted/30">
+      <div class="container mx-auto px-4 xl:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 xl:text-4xl max-sm:text-2xl">
+            精选文章
+          </h2>
+          <p class="text-base text-muted-foreground xl:text-lg max-sm:text-sm">
+            了解北斗安心联的最新动态和技术分享
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div
+            v-for="article in featuredArticles"
+            :key="article.id"
+            class="rounded-lg border border-border/50 bg-card overflow-hidden shadow-card hover:shadow-lg transition-shadow group"
+          >
+            <NuxtLink
+              :to="{
+                path: `/articles/${articleRouteSlug(article.id)}`,
+                query: { back: article.category },
+              }"
+              class="block"
+            >
+              <div class="relative h-48 overflow-hidden bg-muted">
+                <img
+                  :src="article.coverImage"
+                  :alt="article.title"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="inline-block px-2 py-1 text-xs rounded-md bg-background/90 backdrop-blur-sm text-foreground"
+                  >
+                    {{ article.category }}
+                  </span>
+                </div>
+              </div>
+              <div class="p-6 pb-2">
+                <div class="flex items-center text-sm text-muted-foreground mb-2">
+                  <Calendar class="h-4 w-4 mr-1" />
+                  {{ article.date }}
+                </div>
+                <h3 class="text-xl font-semibold group-hover:text-primary transition-colors line-clamp-2">
+                  {{ article.title }}
+                </h3>
+              </div>
+              <div class="px-6 pb-6">
+                <p class="text-muted-foreground line-clamp-2 mb-4 text-sm xl:text-base">
+                  {{ article.summary }}
+                </p>
+                <span
+                  class="inline-flex w-full items-center justify-center rounded-md px-4 py-2 text-sm font-medium hover:bg-primary/10 transition-colors"
+                >
+                  阅读全文
+                  <ArrowRight class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </div>
+            </NuxtLink>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <NuxtLink to="/news?category=行业动态">
+            <button
+              type="button"
+              class="inline-flex items-center justify-center px-8 py-3 rounded-md border border-border bg-background hover:bg-muted transition-colors text-base font-medium"
+            >
+              查看更多文章
+              <ArrowRight class="ml-2 h-4 w-4" />
+            </button>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="py-16 xl:py-24 bg-primary text-primary-foreground">
       <div class="container mx-auto px-4 xl:px-8 text-center">
@@ -271,12 +348,12 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { 
-  MapPin, 
-  Activity, 
-  Bell, 
-  BarChart3, 
-  FileText, 
+import {
+  MapPin,
+  Activity,
+  Bell,
+  BarChart3,
+  FileText,
   Calendar,
   CheckCircle2,
   ArrowRight,
@@ -284,8 +361,9 @@ import {
   Play,
   Shield,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
 } from 'lucide-vue-next'
+import { articleRouteSlug } from '~/utils/articleRouteSlug'
 
 // SEO 配置
 useHead({
@@ -443,6 +521,12 @@ const highlights = [
     description: '源码结构清晰、注释详尽，为优化与改进提供广阔空间，您可在此基础上按需提升系统、拓展新功能，持续提升产品竞争力，创造更多价值。',
   },
 ]
+
+const { data: articles } = await useArticlesList()
+
+const featuredArticles = computed(() =>
+  (articles.value ?? []).filter((a) => a.featured).slice(0, 3),
+)
 
 // 技术优势
 const advantages = [

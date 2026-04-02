@@ -24,8 +24,8 @@ export default defineNuxtConfig({
   // CSS 配置
   css: ['~/assets/css/main.css'],
 
-  // 模块配置
-  modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt', '@nuxtjs/sitemap'],
+  // 模块配置（@nuxt/content 需在 sitemap 前以便构建期解析文章路由）
+  modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@vueuse/nuxt', '@nuxtjs/sitemap'],
 
   // Tailwind CSS 配置
   tailwindcss: {
@@ -47,6 +47,13 @@ export default defineNuxtConfig({
   // 站点 URL（@nuxtjs/sitemap 生成正确域名）
   site: {
     url: 'https://www.xlhd.info',
+  },
+
+  // Nuxt Content：Node 22.5+ 使用 node:sqlite，避免依赖 better-sqlite3 原生编译
+  content: {
+    experimental: {
+      sqliteConnector: 'native',
+    },
   },
 
   // 应用配置
@@ -77,7 +84,16 @@ export default defineNuxtConfig({
         '/product',
         '/cases',
         '/news',
-        '/about'
+        '/about',
+        '/news?category=行业动态',
+        '/articles/award-2025-12',
+        '/articles/milestone-2025-10',
+        '/articles/partnership-2025-08',
+        '/articles/product-upgrade-2025-06',
+        '/articles/exhibition-2025-03',
+        '/articles/iso-certification-2025-01',
+        '/articles/tech-doc-api-integration',
+        '/articles/product-doc-user-manual',
       ]
     }
   },

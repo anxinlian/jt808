@@ -1,29 +1,47 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <!-- Header -->
     <section class="bg-gradient-primary py-12 xl:py-16">
       <div class="container mx-auto px-4 xl:px-8">
         <div class="text-center text-primary-foreground">
-          <h1 class="text-3xl font-bold mb-4 xl:text-4xl max-sm:text-2xl">动态资讯</h1>
+          <h1 class="text-3xl font-bold mb-4 xl:text-4xl max-sm:text-2xl">文章资讯</h1>
           <p class="text-base xl:text-lg max-sm:text-sm text-primary-foreground/90">
-            系统更新日志
+            按分类浏览文章与系统更新记录
           </p>
         </div>
       </div>
     </section>
 
-    <!-- 更新日志 -->
     <section class="py-16 xl:py-20 bg-background">
       <div class="container mx-auto px-4 xl:px-8">
-        <div class="w-full">
-          <div class="max-w-4xl mx-auto space-y-12">
-            <div
-              v-for="(yearData, yearIndex) in changelog"
-              :key="yearIndex"
-            >
-              <!-- Year Header -->
+        <!-- 分类：与 ChangelogPage TabsList 一致 — grid w-full 等分全宽 -->
+        <div class="mb-8 grid w-full grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          <button
+            v-for="cat in categoryList"
+            :key="cat"
+            type="button"
+            :class="[
+              'w-full rounded-md px-2 py-2.5 text-center text-xs transition-colors sm:px-3 sm:text-sm',
+              selectedCategory === cat
+                ? 'bg-primary text-primary-foreground shadow-sm'
+                : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground',
+            ]"
+            @click="selectCategory(cat)"
+          >
+            <span class="inline-block leading-tight">
+              {{ cat }}
+              <span class="opacity-90">({{ categoryBadgeCount(cat) }})</span>
+            </span>
+          </button>
+        </div>
+
+        <!-- 更新日志（固定分类） -->
+        <div v-if="selectedCategory === '更新日志'" class="w-full">
+          <div class="w-full space-y-12">
+            <div v-for="(yearData, yearIndex) in changelog" :key="yearIndex">
               <div class="flex items-center gap-4 mb-8">
-                <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+                >
                   <Calendar class="h-6 w-6" />
                 </div>
                 <h2 class="text-2xl font-bold text-foreground xl:text-3xl max-sm:text-xl">
@@ -31,7 +49,6 @@
                 </h2>
               </div>
 
-              <!-- Updates List -->
               <div class="space-y-6 ml-0 xl:ml-16">
                 <div
                   v-for="(update, updateIndex) in yearData.updates"
@@ -39,11 +56,13 @@
                   class="p-6 rounded-lg shadow-card border border-border/50 mobile-gradient-accent overflow-hidden card-hover"
                 >
                   <div class="flex items-center gap-3 mb-4">
-                    <span class="px-2 py-1 text-xs xl:text-sm bg-secondary text-secondary-foreground rounded-md">
+                    <span
+                      class="px-2 py-1 text-xs xl:text-sm bg-secondary text-secondary-foreground rounded-md"
+                    >
                       {{ update.date }}
                     </span>
                     <span
-                      v-if="update.items.some(item => item.includes('版本上线') || item.includes('版本'))"
+                      v-if="update.items.some((item) => item.includes('版本上线') || item.includes('版本'))"
                       class="px-2 py-1 text-xs bg-primary text-primary-foreground rounded-md"
                     >
                       重要更新
@@ -56,7 +75,9 @@
                       class="flex items-start gap-3"
                     >
                       <CheckCircle2 class="h-5 w-5 text-secondary shrink-0 mt-0.5" />
-                      <span class="text-sm text-foreground xl:text-base max-sm:text-xs leading-relaxed">
+                      <span
+                        class="text-sm text-foreground xl:text-base max-sm:text-xs leading-relaxed"
+                      >
                         {{ item }}
                       </span>
                     </li>
@@ -66,10 +87,64 @@
             </div>
           </div>
         </div>
+
+        <!-- 文章列表：与分类同宽；大屏为左图右文 -->
+        <div v-else class="w-full flex flex-col gap-6">
+          <div
+            v-for="article in filteredArticles"
+            :key="article.id"
+            class="rounded-lg border border-border/50 shadow-card overflow-hidden mobile-gradient-accent card-hover bg-card"
+          >
+            <NuxtLink
+              :to="{
+                path: `/articles/${articleRouteSlug(article.id)}`,
+                query: { back: selectedCategory },
+              }"
+              class="flex flex-col md:flex-row md:items-stretch min-h-0 group"
+            >
+              <!-- 封面宽度与 ChangelogPage @md:w-80 一致 -->
+              <div
+                class="relative h-48 shrink-0 overflow-hidden bg-muted md:h-full md:min-h-[200px] md:w-80"
+              >
+                <img
+                  :src="article.coverImage"
+                  :alt="article.title"
+                  class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute top-3 left-3 md:top-3 md:left-3">
+                  <span
+                    class="inline-block px-2 py-1 text-xs rounded-md bg-background/90 backdrop-blur-sm"
+                  >
+                    {{ article.category }}
+                  </span>
+                </div>
+              </div>
+              <div class="p-5 md:p-6 flex flex-col flex-1 min-w-0">
+                <div class="flex items-center text-sm text-muted-foreground mb-2">
+                  <Calendar class="h-4 w-4 mr-1 shrink-0" />
+                  {{ article.date }}
+                </div>
+                <h2
+                  class="text-lg font-bold mb-2 line-clamp-2 group-hover:text-primary transition-colors xl:text-xl"
+                >
+                  {{ article.title }}
+                </h2>
+                <p class="text-sm text-muted-foreground line-clamp-3 mb-4 flex-1 leading-relaxed">
+                  {{ article.summary }}
+                </p>
+                <div class="flex justify-end mt-auto pt-1">
+                  <span class="inline-flex items-center text-sm font-medium text-primary">
+                    阅读全文
+                    <ArrowRight class="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </div>
+              </div>
+            </NuxtLink>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="py-16 xl:py-20 bg-muted">
       <div class="container mx-auto px-4 xl:px-8">
         <div class="text-center mb-12">
@@ -82,36 +157,20 @@
         </div>
         <div class="grid gap-8 @container xl:grid-cols-4">
           <div class="text-center">
-            <div class="text-4xl font-bold text-primary mb-2 xl:text-5xl max-sm:text-3xl">
-              3+
-            </div>
-            <div class="text-base text-muted-foreground xl:text-lg max-sm:text-sm">
-              主要版本
-            </div>
+            <div class="text-4xl font-bold text-primary mb-2 xl:text-5xl max-sm:text-3xl">3+</div>
+            <div class="text-base text-muted-foreground xl:text-lg max-sm:text-sm">主要版本</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl font-bold text-primary mb-2 xl:text-5xl max-sm:text-3xl">
-              30+
-            </div>
-            <div class="text-base text-muted-foreground xl:text-lg max-sm:text-sm">
-              功能更新
-            </div>
+            <div class="text-4xl font-bold text-primary mb-2 xl:text-5xl max-sm:text-3xl">30+</div>
+            <div class="text-base text-muted-foreground xl:text-lg max-sm:text-sm">功能更新</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl font-bold text-primary mb-2 xl:text-5xl max-sm:text-3xl">
-              50+
-            </div>
-            <div class="text-base text-muted-foreground xl:text-lg max-sm:text-sm">
-              优化改进
-            </div>
+            <div class="text-4xl font-bold text-primary mb-2 xl:text-5xl max-sm:text-3xl">50+</div>
+            <div class="text-base text-muted-foreground xl:text-lg max-sm:text-sm">优化改进</div>
           </div>
           <div class="text-center">
-            <div class="text-4xl font-bold text-primary mb-2 xl:text-5xl max-sm:text-3xl">
-              持续
-            </div>
-            <div class="text-base text-muted-foreground xl:text-lg max-sm:text-sm">
-              更新迭代
-            </div>
+            <div class="text-4xl font-bold text-primary mb-2 xl:text-5xl max-sm:text-3xl">持续</div>
+            <div class="text-base text-muted-foreground xl:text-lg max-sm:text-sm">更新迭代</div>
           </div>
         </div>
       </div>
@@ -120,14 +179,68 @@
 </template>
 
 <script setup lang="ts">
-import { Calendar, CheckCircle2 } from 'lucide-vue-next'
+import { Calendar, CheckCircle2, ArrowRight } from 'lucide-vue-next'
+import type { ArticleListItem } from '~/types/article'
+import { articleRouteSlug } from '~/utils/articleRouteSlug'
+
+const { data: articles } = await useArticlesList()
+const articlesData = computed(() => articles.value ?? [])
 
 useHead({
-  title: '动态资讯',
+  title: '文章资讯',
   meta: [
-    { name: 'description', content: '查看北斗安心联车辆定位监控系统的更新日志。了解系统版本迭代、功能更新、优化改进等信息。支持JT/T808、JT/T809、JT/T1078等协议，提供实时定位、历史轨迹、实时视频、视频回放、车辆管理、ADAS/DSM主动安全等功能。' },
-    { name: 'keywords', content: '车辆定位系统更新日志,车辆监控系统版本更新,系统更新日志,产品升级,功能更新,北斗定位系统更新,车辆监控系统更新' }
-  ]
+    {
+      name: 'description',
+      content:
+        '北斗安心联动态资讯：按分类浏览行业动态、产品与技术文章，以及系统版本更新日志。',
+    },
+    {
+      name: 'keywords',
+      content:
+        '车辆定位系统更新日志,文章资讯,行业动态,北斗定位,车辆监控系统版本更新,产品升级',
+    },
+  ],
+})
+
+/** 含固定项「更新日志」（系统版本记录）；无「全部」，默认选中更新日志 */
+const categoryList = [
+  '行业动态',
+  '产品文档',
+  '技术文档',
+  '更新日志',
+] as const
+
+type Category = (typeof categoryList)[number]
+
+const route = useRoute()
+
+const selectedCategory = computed<Category>(() => {
+  const q = route.query.category
+  const s = Array.isArray(q) ? q[0] : q
+  if (typeof s === 'string' && (categoryList as readonly string[]).includes(s)) {
+    return s as Category
+  }
+  return '更新日志'
+})
+
+async function selectCategory(cat: Category) {
+  if (cat === '更新日志') {
+    await navigateTo({ path: '/news' }, { replace: true })
+  } else {
+    await navigateTo({ path: '/news', query: { category: cat } }, { replace: true })
+  }
+}
+
+const categoryCounts = computed(() => {
+  const counts: Record<string, number> = {
+    行业动态: 0,
+    产品文档: 0,
+    技术文档: 0,
+  }
+  for (const a of articlesData.value) {
+    counts[a.category] = (counts[a.category] ?? 0) + 1
+  }
+  return counts
 })
 
 const changelog = [
@@ -280,4 +393,19 @@ const changelog = [
     ],
   },
 ]
+
+const changelogUpdateCount = computed(() =>
+  changelog.reduce((sum, y) => sum + y.updates.length, 0),
+)
+
+function categoryBadgeCount(cat: Category): number {
+  if (cat === '更新日志') return changelogUpdateCount.value
+  return categoryCounts.value[cat] ?? 0
+}
+
+const filteredArticles = computed<ArticleListItem[]>(() => {
+  const cat = selectedCategory.value
+  if (cat === '更新日志') return []
+  return articlesData.value.filter((a) => a.category === cat)
+})
 </script>

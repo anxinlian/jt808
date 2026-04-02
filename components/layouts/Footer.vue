@@ -48,7 +48,7 @@
             </li>
             <li>
               <NuxtLink to="/news" class="text-sm text-muted-foreground hover:text-primary transition-colors max-sm:text-xs">
-                动态资讯
+                文章资讯
               </NuxtLink>
             </li>
           </ul>
