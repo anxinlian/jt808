@@ -44,9 +44,13 @@ export default defineNuxtConfig({
     },
   },
 
-  // 站点 URL（@nuxtjs/sitemap 生成正确域名）
+  // 站点 URL（@nuxtjs/sitemap / useSiteConfig 生成正确域名）
   site: {
     url: 'https://www.xlhd.info',
+  },
+
+  sitemap: {
+    sources: ['/api/__sitemap__/urls'],
   },
 
   // Nuxt Content：Node 22.5+ 使用 node:sqlite，避免依赖 better-sqlite3 原生编译
@@ -76,24 +80,20 @@ export default defineNuxtConfig({
   // SSG/SSR 配置 - 启用静态站点生成
   nitro: {
     prerender: {
-      // 预渲染所有路由
+      // 从这些入口爬取站内链接并预渲染（不必逐篇写 /articles/xxx）
       crawlLinks: true,
       routes: [
         '/',
+        '/sitemap.xml',
         '/system',
         '/product',
         '/cases',
         '/news',
         '/about',
+        // 资讯页默认是「更新日志」，无文章卡片；带分类后才有指向文章的链接
         '/news?category=行业动态',
-        '/articles/award-2025-12',
-        '/articles/milestone-2025-10',
-        '/articles/partnership-2025-08',
-        '/articles/product-upgrade-2025-06',
-        '/articles/exhibition-2025-03',
-        '/articles/iso-certification-2025-01',
-        '/articles/tech-doc-api-integration',
-        '/articles/product-doc-user-manual',
+        '/news?category=产品文档',
+        '/news?category=技术文档',
       ]
     }
   },

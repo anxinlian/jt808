@@ -6,7 +6,7 @@ category: 技术文档
 coverImage: https://miaoda-site-img.cdn.bcebos.com/images/baidu_image_search_e4770393-06ca-4b43-ac79-86d9cd53f003.jpg
 date: 2024年12月
 featured: false
-sortDate: "2024-12-01"
+sortOrder: 50
 highlights:
   - RESTful API设计规范
   - 完善的认证和鉴权机制

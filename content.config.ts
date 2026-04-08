@@ -14,8 +14,8 @@ export default defineContentConfig({
         coverImage: z.string(),
         date: z.string(),
         featured: z.boolean(),
-        /** ISO 日期字符串，用于列表排序（降序） */
-        sortDate: z.string(),
+        /** 列表排序：数字越大越靠前（与日期无关，仅排序用） */
+        sortOrder: z.number(),
         highlights: z.array(z.string()).optional(),
       }),
     }),

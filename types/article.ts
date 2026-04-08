@@ -7,7 +7,8 @@ export interface ArticleListItem {
   coverImage: string
   date: string
   featured: boolean
-  sortDate?: string
+  /** 列表排序：数字越大越靠前 */
+  sortOrder: number
   highlights?: string[]
   path?: string
 }

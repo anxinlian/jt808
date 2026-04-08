@@ -6,7 +6,7 @@ category: 行业动态
 coverImage: https://miaoda-site-img.cdn.bcebos.com/images/baidu_image_search_aff7b186-fc65-4f9e-aa58-245f29e1d062.jpg
 date: 2025年3月
 featured: false
-sortDate: "2025-03-01"
+sortOrder: 60
 highlights:
   - 展示最新技术成果
   - 吸引国内外客户关注

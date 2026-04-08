@@ -16,11 +16,11 @@ export function useArticlesList() {
           'coverImage',
           'date',
           'featured',
-          'sortDate',
+          'sortOrder',
           'highlights',
           'path',
         )
-        .order('sortDate', 'DESC')
+        .order('sortOrder', 'DESC')
         .all() as Promise<ArticleListItem[]>,
     { default: () => [] as ArticleListItem[] },
   )
