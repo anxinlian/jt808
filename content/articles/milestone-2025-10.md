@@ -1,9 +1,9 @@
 ---
 id: milestone-2025-10
 title: 北斗安心联系统成功服务超过10万辆车
-summary: 截至2025年10月，北斗安心联车辆监控管理系统累计服务车辆数量突破10万辆，覆盖校车、公务车、渣土车、环卫车、物流车等多个应用场景。
+summary: 截至2025年10月，北斗安心联车辆监控管理系统累计服务车辆突破10万辆，覆盖校车、公务车、渣土车、环卫车、物流车等多类场景，持续为企业与监管单位提供实时定位、轨迹追溯、报警联动和运营分析能力，验证了平台在大规模业务中的稳定性与可扩展性，并展现出支持持续扩容与多行业复制落地的长期价值与服务韧性，能力持续进阶。
 category: 行业动态
-coverImage: /articles/images/big_data.png
+coverImage: /articles/images/big_data.jpg
 date: 2025年10月
 featured: true
 sortOrder: 80

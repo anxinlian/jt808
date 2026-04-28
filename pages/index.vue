@@ -127,7 +127,7 @@
           <div class="flex flex-col @md:flex-row xl:order-1">
             <div class="flex-1 relative">
               <img
-                src="/images/index_bigdata.png"
+                src="/images/index_bigdata.jpg"
                 alt="数据大屏"
                 class="rounded-lg shadow-card w-full h-auto"
               />
@@ -262,11 +262,9 @@
             class="rounded-lg border border-border/50 bg-card overflow-hidden shadow-card hover:shadow-lg transition-shadow group"
           >
             <NuxtLink
-              :to="{
-                path: `/articles/${articleRouteSlug(article.id)}`,
-                query: { back: article.category },
-              }"
+              :to="`/articles/${articleRouteSlug(article.id)}`"
               class="block"
+              @click="rememberNewsBackCategory(article.category)"
             >
               <div class="relative h-48 overflow-hidden bg-muted">
                 <img
@@ -307,7 +305,7 @@
         </div>
 
         <div class="text-center">
-          <NuxtLink to="/news?category=行业动态">
+          <NuxtLink :to="categoryToNewsHref('行业动态')">
             <button
               type="button"
               class="inline-flex items-center justify-center px-8 py-3 rounded-md border border-border bg-background hover:bg-muted transition-colors text-base font-medium"
@@ -364,10 +362,11 @@ import {
   ChevronRight,
 } from 'lucide-vue-next'
 import { articleRouteSlug } from '~/utils/articleRouteSlug'
+import { categoryToNewsHref, rememberNewsBackCategory } from '~/utils/newsListBack'
 
 // SEO 配置
 useHead({
-  title: '首页',
+  title: '北斗安心联车辆定位监控系统官网｜JT/T808/1078｜定位·轨迹·视频·报警·数据大屏｜星联互动',
   meta: [
   { name: 'description', content: '河南星联互动科技有限公司专注于北斗/GPS车辆位置信息系统，支持JT/T808、JT/T809、JT/T1078等协议，提供实时定位、历史轨迹、实时视频、视频回放、车辆管理、车务管理、排班调度、围栏管理、标注管理、路线规划、报警规则、里程报表、数据大屏等功能。支持ADAS/DSM高级驾驶辅助系统，支持油量、油杆、温度、湿度、重量、载重、门磁、正反转等传感器。适用于商砼车、油罐车、大巴车、景区车、物流运输等多种车辆类型。' },
   { name: 'keywords', content: '车辆定位,北斗定位,GPS监控,车辆管理系统,轨迹回放,实时定位,历史轨迹,实时视频,视频播放,视频回放,车辆管理,车务管理,排班调度,围栏管理,标注管理,路线规划,报警规则,里程报表,数据大屏,JT/T808,JT/T809,JT/T1078,ADAS,DSM,高级驾驶辅助系统,油量传感器,油杆传感器,温度传感器,湿度传感器,重量传感器,载重传感器,门磁传感器,正反转传感器,商砼车,油罐车,大巴车,景区车,物流运输,车辆监控系统,北斗车辆定位,车辆位置信息系统' }

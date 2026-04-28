@@ -1,9 +1,9 @@
 ---
 id: tech-doc-api-integration
 title: 北斗安心联API接口集成指南
-summary: 详细介绍如何将北斗安心联车辆监控管理系统的API接口集成到第三方应用中，包括认证、数据获取、实时推送等功能。
+summary: 本文提供北斗安心联 API 接口集成全流程说明，覆盖鉴权认证、车辆与报警数据查询、实时消息推送、Webhook 回调处理及异常排查建议，适用于将平台能力接入第三方业务系统、数据中台或移动应用，帮助开发团队高效完成联调上线与稳定运营，并建立可持续迭代的接口治理与监控机制和版本演进规范，提升交付质量等。
 category: 技术文档
-coverImage: https://miaoda-site-img.cdn.bcebos.com/images/baidu_image_search_e4770393-06ca-4b43-ac79-86d9cd53f003.jpg
+coverImage: /articles/images/hangye_api.jpg
 date: 2024年12月
 featured: false
 sortOrder: 50

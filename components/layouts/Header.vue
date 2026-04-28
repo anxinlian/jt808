@@ -23,7 +23,7 @@
           <button
             :class="[
               'text-sm font-medium px-4 py-2 rounded-md transition-colors',
-              route.path === item.path 
+              route.path === item.path || (item.path === '/news' && route.path.startsWith('/news/'))
                 ? 'bg-primary text-primary-foreground' 
                 : 'hover:bg-muted/80'
             ]"
@@ -66,7 +66,7 @@
               @click="isOpen = false"
               :class="[
                 'w-full text-left px-4 py-2 rounded-md transition-colors text-base',
-                route.path === item.path
+                route.path === item.path || (item.path === '/news' && route.path.startsWith('/news/'))
                   ? 'bg-primary text-primary-foreground'
                   : 'hover:bg-muted/80'
               ]"

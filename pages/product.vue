@@ -353,7 +353,7 @@ function visibleSourceFeatures(pkg: { features: { name: string; included: boolea
 watch(sourceTab, () => { sourceFeaturesExpanded.value = false })
 
 useHead({
-  title: '产品版本',
+  title: '产品版本与价格｜北斗安心联车辆定位监控系统｜定位/视频/安全(ADAS/DSM)｜源码交付·独立部署·SAAS｜星联互动',
   meta: [
     { name: 'description', content: '查看北斗安心联车辆定位监控系统的产品版本和价格方案。提供定位版、视频版、安全版（ADAS/DSM）三种版本，支持源码售卖、独立部署和SAAS化接入。定位版支持实时定位、历史轨迹、车辆管理、围栏管理、标注管理、路线规划、报警规则、里程报表等功能。视频版增加实时视频、视频回放、排班调度功能。安全版增加ADAS/DSM主动安全功能。支持定制化开发，适用于商砼车、油罐车、大巴车、景区车、物流运输等多种车辆类型。' },
     { name: 'keywords', content: '车辆定位系统价格,车辆监控系统版本,定位版,视频版,安全版,ADAS,DSM,源码售卖,独立部署,SAAS接入,车辆管理系统价格,车辆定位系统报价,车辆监控系统购买,车辆管理系统定制,商砼车监控,油罐车监控,大巴车监控,景区车监控,物流运输监控,车辆定位系统源码,车辆监控系统源码' }

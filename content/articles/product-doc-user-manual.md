@@ -1,9 +1,9 @@
 ---
 id: product-doc-user-manual
 title: 北斗安心联车辆监控管理平台操作手册
-summary: 全面介绍北斗安心联车辆监控管理系统的功能模块和操作方法，帮助用户快速上手使用系统。
+summary: 本操作手册系统梳理北斗安心联车辆监控管理平台的核心功能与实操流程，涵盖实时监控、轨迹回放、报警处理、报表统计、权限配置等关键模块，并提供清晰上手路径与常见场景说明，帮助管理员与运维人员快速完成部署、培训和日常使用，同时降低新团队接入成本并提升跨岗位协同效率，适合作为企业内部标准培训与长期运维参考文档。
 category: 产品文档
-coverImage: /articles/images/product_doc.png
+coverImage: /articles/images/product_doc.jpg
 date: 2024年11月
 featured: false
 sortOrder: 40

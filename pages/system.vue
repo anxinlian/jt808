@@ -365,7 +365,7 @@ function copyToClipboard(text: string, field: 'account' | 'password') {
 }
 
 useHead({
-  title: '系统介绍',
+  title: '系统介绍与技术架构｜北斗安心联车辆监控管理系统｜协议支持 JT/T808/1078/809｜星联互动',
   meta: [
     { name: 'description', content: '全面了解北斗安心联车辆监控管理系统的技术架构、功能模块和支持协议。支持JT/T808、JT/T809、JT/T1078、苏标、粤标等协议，提供实时定位、历史轨迹、实时视频、视频回放、车辆管理、车务管理、排班调度、围栏管理、标注管理、路线规划、报警规则、里程报表、数据大屏等功能模块。采用Java、Spring Boot、Netty、Redis、MySQL、MongoDB等技术栈，支持ADAS/DSM高级驾驶辅助系统，支持油量、油杆、温度、湿度、重量、载重、门磁、正反转等传感器接入。' },
     { name: 'keywords', content: '车辆监控系统,系统架构,技术栈,JT/T808,JT/T809,JT/T1078,苏标协议,粤标协议,实时定位,历史轨迹,实时视频,视频回放,车辆管理,车务管理,排班调度,围栏管理,标注管理,路线规划,报警规则,里程报表,数据大屏,ADAS,DSM,高级驾驶辅助系统,Java,Spring Boot,Netty,Redis,MySQL,MongoDB,传感器,油量传感器,温度传感器,湿度传感器,载重传感器,门磁传感器,正反转传感器' }

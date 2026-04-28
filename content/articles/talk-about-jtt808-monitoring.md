@@ -1,10 +1,10 @@
 ---
-id: "20260403"
+id: "talk-about-jtt808-monitoring"
 title: "保姆级深入浅出聊聊JTT808车载监控"
-summary: "介绍JTT808、JTT1078、ADAS、DSM是什么，有哪些应用场景"
+summary: "从零讲清 JTT808 车载监控体系，通俗解析 JTT808、JTT1078、ADAS、DSM 的职责分工与协同关系，结合轨迹定位、视频监管、驾驶行为预警和行业落地案例，帮助你快速理解车载终端、监控平台与运营管理三者如何形成完整闭环，并建立对车联网监管逻辑、数据价值与业务应用边界的整体认知与实践判断。"
 category: 技术文档
 coverImage: "/images/index_realtime.png"
-date: "2026年4月"
+date: "2026年4月5日"
 featured: true
 sortOrder: 100
 ---
@@ -16,7 +16,7 @@ sortOrder: 100
 
 ## 一.车载监控系统的铁三角架构
 
-![](/articles/images/flow_chart.png)
+![车载监控系统铁三角架构流程图](/articles/images/flow_chart.png)
 在聊监控内容之前，我们得先知道这套系统是怎么运转的。监控系统由三部分组成：
 
 - 车载终端：俗称定位器、视频一体机、黑匣子等，由终端负责采集数据。
@@ -29,7 +29,7 @@ sortOrder: 100
 
 #### 2.1 轨迹与状态：车辆在哪里
 
-![](/articles/images/track.png)
+![车辆轨迹与状态监控界面示意图](/articles/images/track.jpg)
 
 这是最基础的，基于JTT808协议实现。
 
@@ -43,7 +43,7 @@ sortOrder: 100
 
 #### 2.2 音视频：现场发生了什么
 
-![](/articles/images/video.png)
+![车载音视频实时监控场景示意图](/articles/images/video.jpg)
 
 基于JTT1078协议实现
 
@@ -63,7 +63,7 @@ sortOrder: 100
 
 ##### 2.3.1 ADAS(高级驾驶辅助系统)：盯着路况
 
-![](/articles/images/adas.png)
+![ADAS 高级驾驶辅助预警场景示意图](/articles/images/adas.jpg)
 
 基于车头前方的摄像头，实时计算车辆与周围环境的关系，像一名经验丰富的老司机盯着周围情况：
 
@@ -75,7 +75,7 @@ sortOrder: 100
 
 ##### 2.3.2 DSM(驾驶员行为监测系统)：盯着司机，纠正违章
 
-![](/articles/images/dsm.png)
+![DSM 驾驶员行为监测场景示意图](/articles/images/dsm.jpg)
 
 基于驾驶座上方的红外摄像头，即使司机戴着墨镜或在漆黑的夜晚，依然能精准捕捉面部细微动作：
 
@@ -91,7 +91,7 @@ sortOrder: 100
 
 ## 三.数据的归宿：从“眼睛”到“大脑”
 
-![](/articles/images/big_data.png)
+![车载监控数据汇聚与可视化分析示意图](/articles/images/big_data.jpg)
 
 说到这里，你可能会问，每天产生几万条位置数据、报警数据、图片和视频等，人眼能看得过来吗？
 
@@ -105,6 +105,6 @@ sortOrder: 100
 
 现在，我们再回过头来看驾驶台上那个时不时闪灯的黑盒子，它已经不再是一个简单的行车记录仪了。以JTT808协议为骨架，连接JTT1078视频神经和ADAS/DSM的AI小脑，黑盒子已经变成了一个标准的移动物联网终端。
 
-对于普通人或者司机来说，它可能代表着“被监督”，但对于整个社会来说，它是一道隐形的防线---------拦住了打瞌睡的大车司机，护住了冷链箱里的疫苗，也盯住了违规倾倒的渣土车。![](/articles/images/warm.png)
+对于普通人或者司机来说，它可能代表着“被监督”，但对于整个社会来说，它是一道隐形的防线---------拦住了打瞌睡的大车司机，护住了冷链箱里的疫苗，也盯住了违规倾倒的渣土车。![车载监控守护道路安全与运输合规主题配图](/articles/images/warm.jpg)
 
 这，就是车载监控系统存在的真正意义。

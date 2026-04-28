@@ -1,9 +1,9 @@
 ---
 id: partnership-2025-08
 title: 公司与多家知名企业达成战略合作
-summary: 北斗安心联与国内多家知名企业签署战略合作协议，共同推进车联网技术在各行业的深度应用。
+summary: 北斗安心联与国内多家知名企业达成战略合作，围绕车联网平台共建、行业解决方案联合研发、生态资源共享与服务能力升级展开深入协同，重点推进物流运输、城市运营与重点监管场景的数字化落地，为客户提供更高效、更稳定的一体化车辆监控服务，并加速形成覆盖产品、交付与运营支持的协同生态体系与长期合作网络，强化市场竞争力。
 category: 行业动态
-coverImage: /articles/images/cooperate.png
+coverImage: /articles/images/cooperate.jpg
 date: 2025年8月
 featured: true
 sortOrder: 70

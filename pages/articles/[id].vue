@@ -76,11 +76,9 @@
               <NuxtLink
                 v-for="related in relatedArticles"
                 :key="related.id"
-                :to="{
-                  path: `/articles/${articleRouteSlug(related.id)}`,
-                  query: { ...route.query },
-                }"
+                :to="`/articles/${articleRouteSlug(related.id)}`"
                 class="rounded-lg border border-border/50 shadow-card overflow-hidden hover:shadow-lg transition-shadow bg-card"
+                @click="rememberNewsBackCategory(String(article?.category || '更新日志'))"
               >
                 <div class="relative h-40 overflow-hidden bg-muted">
                   <img
@@ -139,7 +137,7 @@
 
 <script setup lang="ts">
 import { Calendar, ArrowLeft, CheckCircle2 } from 'lucide-vue-next'
-import { resolveNewsListHref } from '~/utils/newsListBack'
+import { rememberNewsBackCategory, resolveNewsListHref } from '~/utils/newsListBack'
 import { articleRouteSlug } from '~/utils/articleRouteSlug'
 import { queryArticleBySlug } from '~/utils/queryArticleBySlug'
 import type { ArticleListItem } from '~/types/article'

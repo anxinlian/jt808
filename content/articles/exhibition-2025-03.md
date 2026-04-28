@@ -1,9 +1,9 @@
 ---
 id: exhibition-2025-03
 title: 北斗安心联参加国际智能交通展览会
-summary: 公司受邀参加2025年国际智能交通展览会，展示了北斗安心联车辆监控管理系统的最新技术成果。
+summary: 公司受邀参加2025年国际智能交通展览会，集中展示北斗安心联车辆监控管理系统在北斗定位、视频监管、主动安全预警与数据可视化运营方面的最新成果，现场吸引大量行业客户交流洽谈并达成多项合作意向，进一步提升品牌在智慧交通领域的影响力，同时为后续产品国际化推广与行业生态合作打开了更大空间和落地机遇，释放持续增长潜力。
 category: 行业动态
-coverImage: https://miaoda-site-img.cdn.bcebos.com/images/baidu_image_search_aff7b186-fc65-4f9e-aa58-245f29e1d062.jpg
+coverImage: /articles/images/hangye_exhibition.jpg
 date: 2025年3月
 featured: false
 sortOrder: 60

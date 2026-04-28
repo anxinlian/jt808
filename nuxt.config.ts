@@ -90,10 +90,9 @@ export default defineNuxtConfig({
         '/cases',
         '/news',
         '/about',
-        // 资讯页默认是「更新日志」，无文章卡片；带分类后才有指向文章的链接
-        '/news?category=行业动态',
-        '/news?category=产品文档',
-        '/news?category=技术文档',
+        '/news/industry',
+        '/news/product-doc',
+        '/news/tech-doc',
       ]
     }
   },

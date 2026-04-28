@@ -171,6 +171,13 @@
                   >
                     {{ contact.business }}
                   </a>
+                  <div class="mt-4">
+                    <img
+                      src="/images/qrcode.png"
+                      alt="商务合作二维码"
+                      class="h-28 w-28 rounded-lg border border-border/50 bg-background object-contain"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -189,44 +196,13 @@
                   >
                     {{ contact.service }}
                   </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- 公司邮箱 -->
-            <div class="p-6 rounded-lg shadow-card border border-border/50 mobile-gradient-accent overflow-hidden card-hover bg-card">
-              <div class="flex items-center gap-4">
-                <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-primary text-primary-foreground shrink-0">
-                  <Mail class="h-7 w-7" />
-                </div>
-                <div class="flex-1">
-                  <h3 class="text-lg font-bold mb-2 xl:text-xl max-sm:text-base text-foreground">公司邮箱</h3>
-                  <a 
-                    :href="`mailto:${contact.email}`"
-                    class="text-base font-semibold text-primary hover:text-secondary transition-colors xl:text-lg max-sm:text-sm break-all"
-                  >
-                    {{ contact.email }}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- 公司官网 -->
-            <div class="p-6 rounded-lg shadow-card border border-border/50 mobile-gradient-accent overflow-hidden card-hover bg-card">
-              <div class="flex items-center gap-4">
-                <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-primary text-primary-foreground shrink-0">
-                  <Globe class="h-7 w-7" />
-                </div>
-                <div class="flex-1">
-                  <h3 class="text-lg font-bold mb-2 xl:text-xl max-sm:text-base text-foreground">公司官网</h3>
-                  <a 
-                    :href="contact.website"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-base font-semibold text-primary hover:text-secondary transition-colors xl:text-lg max-sm:text-sm break-all"
-                  >
-                    {{ contact.website }}
-                  </a>
+                  <div class="mt-4">
+                    <img
+                      src="/images/qrcode_service.png"
+                      alt="客户服务二维码"
+                      class="h-28 w-28 rounded-lg border border-border/50 bg-background object-contain"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -251,14 +227,12 @@ import {
   Target,
   Award,
   Users,
-  Mail,
   Phone,
-  Globe,
   CheckCircle2
 } from 'lucide-vue-next'
 
 useHead({
-  title: '关于我们',
+  title: '关于我们｜星联互动｜北斗安心联车辆定位监控系统服务商｜车联网解决方案·实施交付·运维支持·公司介绍页',
   meta: [
     { name: 'description', content: '了解河南星联互动科技有限公司和北斗安心联车辆定位监控系统。星联互动成立于2020年，位于河南郑州大学科技园东区，专注于北斗/GPS车辆位置信息系统，提供车务管理、位置监控、视频监控、轨迹查询、保养提醒、油量监测等服务。支持JT/T808、JT/T809、JT/T1078等协议，支持实时定位、历史轨迹、实时视频、视频回放、车辆管理、ADAS/DSM主动安全等功能。支持油量、油杆、温度、湿度、重量、载重、门磁、正反转等传感器，适用于商砼车、油罐车、大巴车、景区车、物流运输等多种车辆类型。' },
     { name: 'keywords', content: '河南星联互动,星联互动科技,车辆定位系统公司,车辆监控系统服务商,北斗定位系统公司,车辆管理系统供应商,郑州车辆定位系统,车辆监控系统厂家,车辆定位系统服务,车辆管理系统服务商' }
