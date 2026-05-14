@@ -13,9 +13,9 @@
 const siteUrl = 'https://www.xlhd.info'
 const route = useRoute()
 
-// 每页 canonical URL，避免重复收录
+// 每页 canonical URL，避免重复收录（不带尾部斜杠）
 const canonical = computed(() => {
-  const path = route.path === '/' ? '' : route.path
+  const path = route.path === '/' ? '' : route.path.replace(/\/+$/, '')
   return `${siteUrl}${path}`
 })
 
