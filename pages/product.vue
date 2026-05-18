@@ -353,7 +353,7 @@ function visibleSourceFeatures(pkg: { features: { name: string; included: boolea
 watch(sourceTab, () => { sourceFeaturesExpanded.value = false })
 
 useHead({
-  title: '产品版本与价格｜安心联车辆定位监控系统｜定位/视频/主动安全(ADAS/DSM)｜源码交付·独立部署·SAAS接入｜星联互动',
+  title: '产品版本与价格｜源码交付·独立部署·SAAS接入｜定位/视频/主动安全(ADAS/DSM)',
   meta: [
     {
       name: 'description',
