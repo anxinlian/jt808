@@ -2,6 +2,8 @@
 id: "talk-about-jtt808-monitoring"
 title: "保姆级深入浅出聊聊JTT808车载监控"
 summary: "从零讲清 JTT808 车载监控体系，通俗解析 JTT808、JTT1078、ADAS、DSM 的职责分工与协同关系，结合轨迹定位、视频监管、驾驶行为预警和行业落地案例，帮助你快速理解车载终端、监控平台与运营管理三者如何形成完整闭环，并建立对车联网监管逻辑、数据价值与业务应用边界的整体认知与实践判断。"
+seoTitle: "JTT808车载监控入门｜808/1078/ADAS/DSM协同·星联互动"
+keywords: "JTT808,1078,车载监控,ADAS,DSM,轨迹定位,视频监控,星联互动,入门教程,安心联,808协议"
 category: 技术文档
 coverImage: "/images/index_realtime.png"
 date: "2026年4月5日"

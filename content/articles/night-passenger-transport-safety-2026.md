@@ -2,6 +2,8 @@
 id: "night-passenger-transport-safety-2026"
 title: "深夜营运事故敲响安全警钟，智能主动安全技术筑牢客运行车防线"
 summary: "结合 G40 沪陕高速营运车辆追尾事故案例，分析深夜疲劳驾驶、超员跟车等风险叠加问题，介绍北斗安心联通过 DSM、ADAS、AI 人数识别与北斗定位构建事前预警、事中干预、事后溯源的一体化客运安全管控能力。"
+seoTitle: "深夜客运事故警示｜DSM/ADAS/AI人数识别·安全防线·星联互动"
+keywords: "客运安全,深夜事故,DSM,ADAS,AI人数识别,主动安全,北斗定位,星联互动,营运车辆,安心联,行业动态"
 category: 行业动态
 coverImage: "/articles/images/industry-night-safety-01.jpg"
 date: "2026年5月28日"

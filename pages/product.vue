@@ -337,6 +337,7 @@
 import { ref, watch } from 'vue'
 import { useMediaQuery } from '@vueuse/core'
 import { Check, X } from 'lucide-vue-next'
+import { buildProductJsonLd, GEO_SITE_URL } from '~/utils/geoSchema'
 
 const isXl = useMediaQuery('(min-width: 1280px)')
 const sourceTab = ref(1) // 默认选视频版（推荐）
@@ -352,17 +353,27 @@ function visibleSourceFeatures(pkg: { features: { name: string; included: boolea
 
 watch(sourceTab, () => { sourceFeaturesExpanded.value = false })
 
-useHead({
-  title: '产品版本与价格｜源码交付·独立部署·SAAS接入｜定位/视频/主动安全(ADAS/DSM)',
-  meta: [
-    {
-      name: 'description',
-      content:
-        '北斗安心联产品版本：定位版、视频版、安全版（ADAS/DSM），支持源码交付、独立部署与SaaS接入。涵盖轨迹、视频、报表与定制开发，适用于物流、客运、工程车等车队管理场景。',
-    },
-    { name: 'keywords', content: '车辆定位系统价格,车辆监控系统版本,定位版,视频版,安全版,ADAS,DSM,源码售卖,独立部署,SAAS接入,车辆管理系统价格,车辆定位系统报价,车辆监控系统购买,车辆管理系统定制,商砼车监控,油罐车监控,大巴车监控,景区车监控,物流运输监控,车辆定位系统源码,车辆监控系统源码' }
-  ]
+usePageSeo({
+  title: '产品版本与价格方案｜定位版/视频版/主动安全·源码·SaaS·星联互动',
+  description:
+    '北斗安心联提供定位版、视频版、安全版（ADAS/DSM）三套方案，支持源码交付、独立部署与SaaS接入，涵盖实时定位、轨迹回放、实时视频、报警规则、报表统计与定制开发，适配物流、客运、工程车等车队规模化管理与监管合规需求，可按需选型。',
+  keywords:
+    '车辆定位价格,监控平台版本,定位版,视频版,安全版,ADAS,源码交付,SaaS,独立部署,车队管理系统,星联互动,报价方案',
 })
+
+useJsonLd(
+  buildProductJsonLd({
+    name: '北斗安心联车辆监控管理平台',
+    description:
+      '支持定位版、视频版、安全版（ADAS/DSM）三套方案，源码交付或 SaaS 接入，涵盖实时定位、轨迹回放、视频、围栏报警与报表统计。',
+    url: `${GEO_SITE_URL}/product`,
+    offers: [
+      { name: '定位版', description: '实时定位、历史轨迹、围栏与车务管理', price: '4.98万元' },
+      { name: '视频版', description: '定位 + 实时视频与录像回放', price: '6.98万元' },
+      { name: '安全版', description: '定位 + 视频 + ADAS/DSM 主动安全', price: '9.98万元' },
+    ],
+  }),
+)
 
 const packages = [
   {

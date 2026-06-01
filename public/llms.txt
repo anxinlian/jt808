@@ -1,0 +1,38 @@
+# 河南星联互动科技有限公司 / 北斗安心联
+> 专注 JT/T 808、809、1078 车载监控协议，提供车辆定位、实时视频、主动安全（ADAS/DSM）、油量/温湿度监测与车队管理平台，支持源码交付、SaaS 接入与二次开发。
+
+## 核心页面
+- 首页：https://www.xlhd.info/
+- 系统介绍（架构与协议）：https://www.xlhd.info/system
+- 产品版本与方案：https://www.xlhd.info/product
+- 项目案例：https://www.xlhd.info/cases
+- 文章资讯：https://www.xlhd.info/news
+- 关于我们：https://www.xlhd.info/about
+
+## 技术文档（精选）
+- 车载油量监控：油杆与超声波对比、808 扩展上报、偷油分析
+  https://www.xlhd.info/articles/vehicle-fuel-monitoring-stick-vs-ultrasonic
+- JTT1078 车载视频协议入门
+  https://www.xlhd.info/articles/jtt1078-video-protocol-intro
+- JTT808 车载监控入门
+  https://www.xlhd.info/articles/talk-about-jtt808-monitoring
+- JT808 单机 5 万终端高并发压测
+  https://www.xlhd.info/articles/high-concurrency-jt808-stress
+- ADAS/DSM 主动安全技术详解
+  https://www.xlhd.info/articles/adas-dsm-active-safety-primer
+- JT808 温湿度监测功能详解
+  https://www.xlhd.info/articles/jt808-temperature-humidity-monitoring
+- API 接口集成指南
+  https://www.xlhd.info/articles/tech-doc-api-integration
+
+## 产品与能力关键词
+北斗安心联, 星联互动, 车辆定位, GPS监控, JT808, JT1078, JT809, 轨迹回放, 实时视频, 围栏报警, ADAS, DSM, 主动安全, 油量监控, 温湿度监测, 车队管理, 源码交付, SaaS
+
+## 实体信息
+- 公司全称：河南星联互动科技有限公司
+- 品牌简称：星联互动
+- 产品名称：北斗安心联车辆监控管理系统
+- 官网：https://www.xlhd.info
+
+## 联系与引用
+引用本站技术内容请注明来源「星联互动 / 北斗安心联」及原文链接。商务合作与方案咨询请访问官网。

@@ -13,7 +13,10 @@
 
     <section class="py-16 xl:py-20 bg-background">
       <div class="container mx-auto px-4 xl:px-8">
-        <div class="mb-8 grid w-full grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <div
+          id="news-tabs"
+          class="mb-8 grid w-full grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-4 scroll-mt-20"
+        >
           <button
             v-for="cat in categoryList"
             :key="cat"
@@ -173,12 +176,14 @@
 </template>
 
 <script setup lang="ts">
+import { fitSeoDescription, fitSeoKeywords, fitSeoTitle } from '~/utils/seoMeta'
 import { Calendar, CheckCircle2, ArrowRight } from 'lucide-vue-next'
 import type { ArticleListItem } from '~/types/article'
 import { articleRouteSlug } from '~/utils/articleRouteSlug'
 import {
   categoryToNewsHref,
   isNewsRouteCategory,
+  NEWS_TABS_HASH,
   newsSlugToCategory,
   rememberNewsBackCategory,
 } from '~/utils/newsListBack'
@@ -186,6 +191,37 @@ import {
 const { data: articles } = await useArticlesList()
 const articlesData = computed(() => articles.value ?? [])
 const route = useRoute()
+const newsTabsScrollLock = useNewsTabsScrollLock()
+
+const NEWS_TABS_HEADER_OFFSET = 80
+
+function waitTwoFrames() {
+  return new Promise<void>((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve()))
+  })
+}
+
+onBeforeMount(() => {
+  if (route.hash === `#${NEWS_TABS_HASH}`) {
+    newsTabsScrollLock.value = true
+  }
+})
+
+onMounted(async () => {
+  if (route.hash !== `#${NEWS_TABS_HASH}`) return
+
+  try {
+    const el = document.getElementById(NEWS_TABS_HASH)
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - NEWS_TABS_HEADER_OFFSET
+      window.scrollTo({ top, left: 0, behavior: 'auto' })
+    }
+  } finally {
+    await waitTwoFrames()
+    newsTabsScrollLock.value = false
+    document.documentElement.style.overflow = ''
+  }
+})
 
 const categoryList = [
   '行业动态',
@@ -406,23 +442,30 @@ useHead(() => {
   const origin = (siteConfig.url || 'https://www.xlhd.info').replace(/\/$/, '')
   const path = categoryToNewsHref(selectedCategory.value)
   const canonical = `${origin}${path}`
-  const title =
+
+  const titleBase =
     selectedCategory.value === '更新日志'
-      ? '文章资讯与更新日志｜北斗安心联车辆定位监控系统｜行业动态·产品文档·技术文档·版本迭代·技术分享｜星联互动'
-      : `${selectedCategory.value}文章｜北斗安心联车辆定位监控系统｜JT/T808/1078·定位·视频·报警·集成指南｜星联互动`
+      ? '更新日志｜安心联车辆监控版本迭代与功能发布·星联互动科技'
+      : selectedCategory.value === '行业动态'
+        ? '行业动态资讯｜营运安全·车联网监管·北斗监控·星联互动科技'
+        : selectedCategory.value === '产品文档'
+          ? '产品文档中心｜安心联操作手册·接口指南·版本说明·星联互动'
+          : selectedCategory.value === '技术文档'
+            ? '技术文档中心｜808/1078协议·集成开发·压测案例·星联互动'
+            : '文章资讯中心｜行业动态·产品文档·技术文档·更新日志·星联互动'
+
+  const descriptionBase =
+    '北斗安心联文章资讯中心，按行业动态、产品文档、技术文档与更新日志分类浏览，覆盖JT808/1078协议、定位视频、主动安全、接口集成、压测报告与落地案例，帮助车队管理者与开发者快速了解产品能力、集成方法与运维优化实践，内容持续更新发布。'
+
+  const keywordsBase =
+    '车辆监控资讯,行业动态,产品文档,技术文档,808协议,1078协议,更新日志,车队管理,星联互动,技术分享,安心联'
 
   return {
-    title,
+    title: fitSeoTitle(titleBase),
+    titleTemplate: '%s',
     meta: [
-      {
-        name: 'description',
-        content:
-          '北斗安心联文章资讯聚合页：按分类浏览行业动态、产品文档、技术文档与系统更新日志，覆盖 JT/T808、JT/T1078、车辆定位监控、实时视频、报警与数据分析等内容，帮助你快速了解产品能力、集成方法与落地实践，并获取最新版本迭代信息。包含接口指南、压测报告与案例解读，适用于车队管理、监管接入与运维优化参考。',
-      },
-      {
-        name: 'keywords',
-        content: '车辆定位系统更新日志,文章资讯,行业动态,北斗定位,车辆监控系统版本更新,产品升级',
-      },
+      { name: 'description', content: fitSeoDescription(descriptionBase) },
+      { name: 'keywords', content: fitSeoKeywords(keywordsBase) },
     ],
     link: [{ rel: 'canonical', href: canonical }],
   }

@@ -322,6 +322,7 @@ import {
   Copy,
   Check,
 } from 'lucide-vue-next'
+import { buildSoftwareApplicationJsonLd, GEO_SITE_URL } from '~/utils/geoSchema'
 
 const experienceUrl = 'https://iov.xlhd.cloud/login'
 const experienceAccount = 'cctest'
@@ -364,17 +365,24 @@ function copyToClipboard(text: string, field: 'account' | 'password') {
   }
 }
 
-useHead({
-  title: '系统介绍与技术架构｜北斗安心联车辆监控管理系统｜协议支持 JT/T808/1078/809｜星联互动',
-  meta: [
-    {
-      name: 'description',
-      content:
-        '北斗安心联系统架构与能力：支持JT/T808、JT/T809、JT/T1078及苏标、粤标，含定位、轨迹、视频、车务与报表；Java/Spring/Netty、Redis、MySQL、MongoDB 技术栈，支持ADAS/DSM与多类传感器接入。',
-    },
-    { name: 'keywords', content: '车辆监控系统,系统架构,技术栈,JT/T808,JT/T809,JT/T1078,苏标协议,粤标协议,实时定位,历史轨迹,实时视频,视频回放,车辆管理,车务管理,排班调度,围栏管理,标注管理,路线规划,报警规则,里程报表,数据大屏,ADAS,DSM,高级驾驶辅助系统,Java,Spring Boot,Netty,Redis,MySQL,MongoDB,传感器,油量传感器,温度传感器,湿度传感器,载重传感器,门磁传感器,正反转传感器' }
-  ]
+usePageSeo({
+  title: '系统架构与技术栈介绍｜808/1078/809·定位视频报表·星联互动科技',
+  description:
+    '北斗安心联支持JT/T808、809、1078及苏标、粤标协议，整合定位、轨迹、视频、车务与报表模块，采用Java/Spring/Netty、Redis、MySQL、MongoDB技术栈，兼容ADAS/DSM与油杆、温湿度等多类传感器接入，适合车队平台开发、监管对接与二次定制扩展。',
+  keywords:
+    '车辆监控系统,808协议,1078协议,系统架构,Java,Netty,实时定位,视频回放,ADAS,传感器接入,星联互动,技术栈',
 })
+
+useJsonLd(
+  buildSoftwareApplicationJsonLd({
+    name: '北斗安心联车辆监控管理系统',
+    description:
+      '支持 JT/T 808、809、1078 协议的车队监控平台，提供实时定位、轨迹回放、视频监控、围栏报警、报表统计与 ADAS/DSM 主动安全，可源码交付或 SaaS 接入。',
+    url: `${GEO_SITE_URL}/system`,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web, Android, iOS',
+  }),
+)
 
 const activeTab = ref('backend')
 

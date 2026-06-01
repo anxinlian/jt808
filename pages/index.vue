@@ -305,7 +305,7 @@
         </div>
 
         <div class="text-center">
-          <NuxtLink :to="categoryToNewsHref('行业动态')">
+          <NuxtLink :to="categoryToNewsHref('行业动态', { scrollToTabs: true })">
             <button
               type="button"
               class="inline-flex items-center justify-center px-8 py-3 rounded-md border border-border bg-background hover:bg-muted transition-colors text-base font-medium"
@@ -365,12 +365,12 @@ import { articleRouteSlug } from '~/utils/articleRouteSlug'
 import { categoryToNewsHref, rememberNewsBackCategory } from '~/utils/newsListBack'
 
 // SEO 配置
-useHead({
-  title: '北斗安心联车辆定位监控系统官网｜JT/T808/1078｜定位·轨迹·视频·报警·数据大屏｜星联互动',
-  meta: [
-  { name: 'description', content: '河南星联互动科技有限公司专注于北斗/GPS车辆位置信息系统，支持JT/T808、JT/T809、JT/T1078等协议，提供实时定位、历史轨迹、实时视频、视频回放、车辆管理、车务管理、排班调度、围栏管理、标注管理、路线规划、报警规则、里程报表、数据大屏等功能。支持ADAS/DSM高级驾驶辅助系统，支持油量、油杆、温度、湿度、重量、载重、门磁、正反转等传感器。适用于商砼车、油罐车、大巴车、景区车、物流运输等多种车辆类型。' },
-  { name: 'keywords', content: '车辆定位,北斗定位,GPS监控,车辆管理系统,轨迹回放,实时定位,历史轨迹,实时视频,视频播放,视频回放,车辆管理,车务管理,排班调度,围栏管理,标注管理,路线规划,报警规则,里程报表,数据大屏,JT/T808,JT/T809,JT/T1078,ADAS,DSM,高级驾驶辅助系统,油量传感器,油杆传感器,温度传感器,湿度传感器,重量传感器,载重传感器,门磁传感器,正反转传感器,商砼车,油罐车,大巴车,景区车,物流运输,车辆监控系统,北斗车辆定位,车辆位置信息系统' }
-  ]
+usePageSeo({
+  title: '北斗安心联车辆监控管理系统官网｜808/1078·定位轨迹视频报警·星联互动',
+  description:
+    '星联互动北斗安心联车辆监控平台，支持JT/T808、JT/T809、JT/T1078协议，提供实时定位、历史轨迹、实时视频、视频回放、围栏报警、数据大屏与ADAS/DSM主动安全，广泛适配物流、客运、工程车等车队监管场景，助力企业合规运营、降本增效与数字化管理。',
+  keywords:
+    '车辆定位,北斗定位,GPS监控,JT808,车辆管理系统,轨迹回放,实时视频,视频回放,围栏报警,数据大屏,ADAS,DSM,物流监控,客运监控,星联互动',
 })
 
 // 轮播图数据

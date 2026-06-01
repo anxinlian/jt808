@@ -2,6 +2,8 @@
 id: tech-doc-api-integration
 title: 北斗安心联API接口集成指南
 summary: 本文提供北斗安心联 API 接口集成全流程说明，覆盖鉴权认证、车辆与报警数据查询、实时消息推送、Webhook 回调处理及异常排查建议，适用于将平台能力接入第三方业务系统、数据中台或移动应用，帮助开发团队高效完成联调上线与稳定运营，并建立可持续迭代的接口治理与监控机制和版本演进规范，提升交付质量等。
+seoTitle: "北斗安心联API集成指南｜鉴权推送Webhook·第三方对接·星联"
+keywords: "API集成,接口文档,鉴权,Webhook,报警推送,第三方对接,星联互动,开放平台,安心联,集成指南"
 category: 技术文档
 coverImage: /articles/images/hangye_api.jpg
 date: 2024年12月

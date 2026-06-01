@@ -2,6 +2,8 @@
 id: "adas-dsm-active-safety-primer"
 title: "车载主动安全ADAS/DSM技术原理、业务应用与平台接入方案"
 summary: "从营运监管场景出发，说明 ADAS 与 DSM 的定义差异、技术分层（硬件/算法/协议/平台）、典型行业应用，并梳理平台接入要点、常见痛点与落地路径，帮助开发者与集成商建立主动安全全链路认知。"
+seoTitle: "ADAS/DSM主动安全技术详解｜架构·协议接入·落地场景·星联互动科技"
+keywords: "ADAS,DSM,主动安全,驾驶员监测,808协议,1078协议,苏标,粤标,车队安全,星联互动,安心联,智慧交通"
 category: 技术文档
 coverImage: "/articles/images/adas-dsm-primer-01.jpg"
 date: "2026年5月13日"

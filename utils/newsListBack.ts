@@ -33,9 +33,20 @@ function pickBackQuery(q: unknown): string | undefined {
   return undefined
 }
 
-export function categoryToNewsHref(category: string): string {
-  if (!isNewsRouteCategory(category) || category === '更新日志') return '/news'
-  return `/news/${CATEGORY_TO_SLUG[category]}`
+/** 资讯页分类 Tab 锚点，用于跳转后定位到 Tab 区域 */
+export const NEWS_TABS_HASH = 'news-tabs'
+
+export function categoryToNewsHref(
+  category: string,
+  opts?: { scrollToTabs?: boolean },
+): string {
+  let path: string
+  if (!isNewsRouteCategory(category) || category === '更新日志') {
+    path = '/news'
+  } else {
+    path = `/news/${CATEGORY_TO_SLUG[category]}`
+  }
+  return opts?.scrollToTabs ? `${path}#${NEWS_TABS_HASH}` : path
 }
 
 export function newsSlugToCategory(slug: string): Exclude<NewsRouteCategory, '更新日志'> | null {

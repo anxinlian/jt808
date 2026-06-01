@@ -17,6 +17,10 @@ export default defineContentConfig({
         /** 列表排序：数字越大越靠前（与日期无关，仅排序用） */
         sortOrder: z.number(),
         highlights: z.array(z.string()).optional(),
+        /** 页面 title 标签（50–60 字），缺省取 title 自动规范 */
+        seoTitle: z.string().optional(),
+        /** meta keywords（50–90 字） */
+        keywords: z.string().optional(),
       }),
     }),
   },

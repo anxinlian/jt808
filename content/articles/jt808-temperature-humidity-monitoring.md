@@ -2,6 +2,8 @@
 id: "jt808-temperature-humidity-monitoring"
 title: "基于JT808协议的安心联车载监控系统温湿度监测功能详解"
 summary: "介绍营运车辆温湿度监测的核心价值与典型场景，说明实时采集、异常报警、历史追溯等基础能力，以及四路同步监测的升级方案，并梳理 JT/T 808 数据封装与远程管控要点，覆盖货运、冷链与危险品运输等应用。"
+seoTitle: "JT808温湿度监测详解｜单路四路采集·报警追溯·星联互动"
+keywords: "温湿度监测,808协议,四路监测,冷链运输,异常报警,数据追溯,车载传感器,星联互动,安心联,危险品运输"
 category: 技术文档
 coverImage: "/articles/images/jt808-temp-humidity-01.jpg"
 date: "2026年5月18日"

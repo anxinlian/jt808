@@ -140,6 +140,8 @@ import { Calendar, ArrowLeft, CheckCircle2 } from 'lucide-vue-next'
 import { rememberNewsBackCategory, resolveNewsListHref } from '~/utils/newsListBack'
 import { articleRouteSlug } from '~/utils/articleRouteSlug'
 import { queryArticleBySlug } from '~/utils/queryArticleBySlug'
+import { fitSeoDescription, fitSeoKeywords, fitSeoTitle } from '~/utils/seoMeta'
+import { buildArticleJsonLd, parseArticleDate } from '~/utils/geoSchema'
 import type { ArticleListItem } from '~/types/article'
 
 type TocLinkLike = { id: string; text: string; depth: number; children?: TocLinkLike[] }
@@ -205,6 +207,16 @@ function absoluteUrl(origin: string, pathOrUrl: string) {
   return `${base}${p}`
 }
 
+function defaultArticleKeywords(category: string) {
+  if (category === '行业动态') {
+    return '行业动态,车辆监控,营运安全,北斗定位,主动安全,星联互动,安心联,车联网'
+  }
+  if (category === '产品文档') {
+    return '产品文档,操作手册,监控平台,星联互动,安心联,使用指南,功能说明,报表'
+  }
+  return '技术文档,808协议,1078协议,车载监控,集成开发,星联互动,安心联,技术分享'
+}
+
 watch(
   [article, articleStatus],
   () => {
@@ -220,20 +232,44 @@ useHead(() => {
   const a = article.value
   const origin = (siteConfig.url || 'https://www.xlhd.info').replace(/\/$/, '')
   if (!a) {
-    return { title: '文章资讯' }
+    return { title: fitSeoTitle('文章资讯｜北斗安心联车辆监控·星联互动') }
   }
   const path = `/articles/${slug.value}`
   const pageUrl = `${origin}${path}`
   const ogImage = absoluteUrl(origin, String(a.coverImage || ''))
+  const displayTitle = String(a.title || '')
+  const seoTitle = fitSeoTitle(String(a.seoTitle || displayTitle))
+  const seoDescription = fitSeoDescription(String(a.summary || ''))
+  const seoKeywords = fitSeoKeywords(
+    String(a.keywords || defaultArticleKeywords(String(a.category || '技术文档'))),
+  )
+  const articleJsonLd = buildArticleJsonLd({
+    title: displayTitle,
+    description: seoDescription,
+    url: pageUrl,
+    image: ogImage,
+    datePublished: parseArticleDate(String(a.date || '')),
+    keywords: String(a.keywords || ''),
+    category: String(a.category || ''),
+  })
   return {
-    title: `${a.title} - 文章资讯`,
+    title: seoTitle,
+    titleTemplate: '%s',
     meta: [
-      { name: 'description', content: a.summary },
-      { property: 'og:title', content: a.title },
-      { property: 'og:description', content: a.summary },
+      { name: 'description', content: seoDescription },
+      { name: 'keywords', content: seoKeywords },
+      { property: 'og:title', content: displayTitle },
+      { property: 'og:description', content: seoDescription },
       { property: 'og:type', content: 'article' },
       { property: 'og:url', content: pageUrl },
       { property: 'og:image', content: ogImage },
+    ],
+    script: [
+      {
+        key: 'jsonld-article',
+        type: 'application/ld+json',
+        textContent: JSON.stringify(articleJsonLd),
+      },
     ],
   }
 })

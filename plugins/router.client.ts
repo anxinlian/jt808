@@ -1,46 +1,82 @@
-export default defineNuxtPlugin(() => {
-  // 处理锚点链接的平滑滚动
-  if (import.meta.client) {
-    const router = useRouter()
-    let scrollTimer: ReturnType<typeof setTimeout> | null = null
-    let isScrolling = false
-    
-    router.afterEach((to, from) => {
-      // 清除之前的滚动定时器
-      if (scrollTimer) {
-        clearTimeout(scrollTimer)
-        scrollTimer = null
-      }
-      
-      // 如果 URL 包含锚点
-      if (to.hash && !isScrolling) {
-        isScrolling = true
-        
-        // 等待页面完全渲染（跨页面跳转需要更长时间）
-        const delay = to.path !== from.path ? 600 : 100
-        scrollTimer = setTimeout(() => {
-          const element = document.querySelector(to.hash)
-          if (element) {
-            // 计算偏移量，考虑固定头部的高度
-            const headerOffset = 80
-            const elementTop = element.getBoundingClientRect().top + window.pageYOffset
-            const offsetPosition = elementTop - headerOffset
+import { NEWS_TABS_HASH } from '~/utils/newsListBack'
 
-            // 直接滚动到目标位置，只执行一次
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            })
-            
-            // 滚动完成后重置标志
-            setTimeout(() => {
-              isScrolling = false
-            }, 1000)
-          } else {
-            isScrolling = false
-          }
-        }, delay)
-      }
-    })
+export default defineNuxtPlugin(() => {
+  if (!import.meta.client) return
+
+  // 禁止浏览器恢复历史滚动位置，避免跨页跳转先闪到底部
+  history.scrollRestoration = 'manual'
+
+  const router = useRouter()
+  const HEADER_OFFSET = 80
+  let pollFrameId: number | null = null
+  const newsTabsScrollLock = useNewsTabsScrollLock()
+
+  function clearHashPoll() {
+    if (pollFrameId != null) {
+      cancelAnimationFrame(pollFrameId)
+      pollFrameId = null
+    }
   }
+
+  function unlockScroll() {
+    document.documentElement.style.overflow = ''
+  }
+
+  function scrollToHashInstant(hash: string): boolean {
+    const element = document.querySelector(hash)
+    if (!element) return false
+    const top = element.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET
+    window.scrollTo({ top, left: 0, behavior: 'auto' })
+    return true
+  }
+
+  function pollScrollToHash(hash: string, attempts = 0) {
+    if (scrollToHashInstant(hash)) {
+      unlockScroll()
+      return
+    }
+    if (attempts >= 60) {
+      unlockScroll()
+      return
+    }
+    pollFrameId = requestAnimationFrame(() => pollScrollToHash(hash, attempts + 1))
+  }
+
+  router.beforeEach((to, from) => {
+    clearHashPoll()
+    if (!to.hash || to.path === from.path) return
+
+    const isNewsTabs = to.hash === `#${NEWS_TABS_HASH}`
+    if (isNewsTabs) {
+      newsTabsScrollLock.value = true
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    document.documentElement.style.overflow = 'hidden'
+  })
+
+  router.afterEach((to, from) => {
+    clearHashPoll()
+
+    if (to.hash !== `#${NEWS_TABS_HASH}`) {
+      newsTabsScrollLock.value = false
+    }
+
+    if (to.hash) {
+      // #news-tabs 由 NewsPage 定位后再展示，避免先渲染顶部再滚动
+      if (to.hash === `#${NEWS_TABS_HASH}`) return
+      pollScrollToHash(to.hash)
+      return
+    }
+
+    unlockScroll()
+
+    if (to.path !== from.path) {
+      const fromNews = from.path === '/news' || from.path.startsWith('/news/')
+      const toNews = to.path === '/news' || to.path.startsWith('/news/')
+      if (!(fromNews && toNews)) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+      }
+    }
+  })
 })
