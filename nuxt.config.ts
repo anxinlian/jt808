@@ -55,6 +55,13 @@ export default defineNuxtConfig({
     url: 'https://www.xlhd.info',
   },
 
+  // 旧版静态站 .html 路径 → 新站路由（避免 Search Console 404、保留外链权重）
+  routeRules: {
+    '/index.html': { redirect: { to: '/', statusCode: 301 } },
+    '/about.html': { redirect: { to: '/about', statusCode: 301 } },
+    '/article_it/**': { redirect: { to: '/news/tech-doc', statusCode: 301 } },
+  },
+
   sitemap: {
     sources: ['/api/__sitemap__/urls'],
   },
@@ -74,7 +81,7 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       title: '星联互动·北斗安心联车辆定位监控系统',
       meta: [
-        { name: 'description', content: '星联互动北斗安心联车辆监控平台，支持JT/T808、JT/T809、JT/T1078协议，提供实时定位、历史轨迹、实时视频、视频回放、围栏报警、数据大屏与ADAS/DSM主动安全，广泛适配物流、客运、工程车等车队监管场景，助力企业合规运营、降本增效与数字化管理。' },
+        { name: 'description', content: '河南星联互动科技旗下北斗安心联，专注北斗/GPS车辆定位与车载视频监控管理系统研发，为物流、客运与政企车队提供定位轨迹、视频报警、主动安全与数据大屏的一体化监管平台及定制交付服务。' },
         { name: 'keywords', content: '车辆定位,北斗定位,GPS监控,JT808,车辆管理系统,轨迹回放,实时视频,视频回放,围栏报警,数据大屏,ADAS,DSM,物流监控,客运监控,星联互动' }
       ],
       link: [
@@ -90,6 +97,10 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         '/',
+        '/about.html',
+        '/article_it/codeGen.html',
+        '/article_it/package.html',
+        '/article_it/sql.html',
         '/sitemap.xml',
         '/system',
         '/product',

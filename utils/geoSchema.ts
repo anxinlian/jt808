@@ -118,20 +118,27 @@ export interface ProductOfferInput {
   price?: string
 }
 
+/** 产品页 JSON-LD 默认配图（Google Merchant / Product 富结果必填 image） */
+export const GEO_PRODUCT_IMAGE = `${GEO_SITE_URL}/images/index_realtime.png`
+
 export interface ProductJsonLdInput {
   name: string
   description: string
   url: string
+  /** 绝对 URL；不传则使用 GEO_PRODUCT_IMAGE */
+  image?: string | string[]
   offers: ProductOfferInput[]
 }
 
 export function buildProductJsonLd(input: ProductJsonLdInput) {
+  const image = input.image ?? GEO_PRODUCT_IMAGE
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: input.name,
     description: input.description,
     url: input.url,
+    image,
     brand: {
       '@type': 'Brand',
       name: GEO_ORGANIZATION.alternateName,

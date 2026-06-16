@@ -337,7 +337,7 @@
 import { ref, watch } from 'vue'
 import { useMediaQuery } from '@vueuse/core'
 import { Check, X } from 'lucide-vue-next'
-import { buildProductJsonLd, GEO_SITE_URL } from '~/utils/geoSchema'
+import { buildProductJsonLd, GEO_PRODUCT_IMAGE, GEO_SITE_URL } from '~/utils/geoSchema'
 
 const isXl = useMediaQuery('(min-width: 1280px)')
 const sourceTab = ref(1) // 默认选视频版（推荐）
@@ -367,6 +367,7 @@ useJsonLd(
     description:
       '支持定位版、视频版、安全版（ADAS/DSM）三套方案，源码交付或 SaaS 接入，涵盖实时定位、轨迹回放、视频、围栏报警与报表统计。',
     url: `${GEO_SITE_URL}/product`,
+    image: GEO_PRODUCT_IMAGE,
     offers: [
       { name: '定位版', description: '实时定位、历史轨迹、围栏与车务管理', price: '4.98万元' },
       { name: '视频版', description: '定位 + 实时视频与录像回放', price: '6.98万元' },

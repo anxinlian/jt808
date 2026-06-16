@@ -9,7 +9,21 @@
 - 文章资讯：https://www.xlhd.info/news
 - 关于我们：https://www.xlhd.info/about
 
+## 行业动态（精选）
+- 四川湖北景区客车改造：会车语音预警、到站大屏播报
+  https://www.xlhd.info/articles/scenic-bus-meeting-warning-arrival-sichuan-hubei
+
 ## 技术文档（精选）
+- 北斗安心联搅拌车监控：滚筒状态采集、ADAS+DSM、808 扩展与 1078 联动
+  https://www.xlhd.info/articles/concrete-mixer-truck-monitoring-adas-dsm
+- 安心联校车监控实战：808 扩展对接、1078 视频联动、车门监测与人数统计
+  https://www.xlhd.info/articles/anxinlian-school-bus-monitoring-jt808-1078
+- 物流车队门磁落地：808 扩展上报、1078 视频联动、误报警排查
+  https://www.xlhd.info/articles/logistics-fleet-door-sensor-jt808-1078
+- 渣土车智能倾倒监测：倾角称重融合、808 电子围栏、违规告警
+  https://www.xlhd.info/articles/dump-truck-smart-tilt-monitoring-multisensor
+- 车载载重监测：悬架与胎压对比、808 扩展上报、超载预警
+  https://www.xlhd.info/articles/vehicle-load-monitoring-suspension-vs-tire-pressure
 - 车载油量监控：油杆与超声波对比、808 扩展上报、偷油分析
   https://www.xlhd.info/articles/vehicle-fuel-monitoring-stick-vs-ultrasonic
 - JTT1078 车载视频协议入门
