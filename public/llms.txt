@@ -14,6 +14,8 @@
   https://www.xlhd.info/articles/scenic-bus-meeting-warning-arrival-sichuan-hubei
 
 ## 技术文档（精选）
+- 北斗安心联高价值货运监控：芯片/名酒精密货品、门磁管控、808 定位与 1078 视频
+  https://www.xlhd.info/articles/anxinlian-high-value-cargo-security-monitoring
 - 北斗安心联冷链监控：温湿度采集、门磁监测、ADAS+DSM、808 扩展与 1078 联动
   https://www.xlhd.info/articles/anxinlian-cold-chain-integrated-monitoring
 - 北斗安心联搅拌车监控：滚筒状态采集、ADAS+DSM、808 扩展与 1078 联动
