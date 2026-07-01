@@ -208,8 +208,8 @@ function absoluteUrl(origin: string, pathOrUrl: string) {
 }
 
 function defaultArticleKeywords(category: string) {
-  if (category === '行业动态') {
-    return '行业动态,车辆监控,营运安全,北斗定位,主动安全,星联互动,安心联,车联网'
+  if (category === '行业资讯') {
+    return '行业资讯,车辆监控,营运安全,北斗定位,主动安全,星联互动,安心联,车联网'
   }
   if (category === '产品文档') {
     return '产品文档,操作手册,监控平台,星联互动,安心联,使用指南,功能说明,报表'

@@ -9,11 +9,17 @@
 - 文章资讯：https://www.xlhd.info/news
 - 关于我们：https://www.xlhd.info/about
 
-## 行业动态（精选）
+## 行业资讯（精选）
+- 冷链行业数字化：温湿度监测、门磁管控、GSP 溯源与 808/1078 视频联动
+  https://www.xlhd.info/articles/cold-chain-industry-digital-supervision
+- 商砼行业数字化：搅拌车滚筒工况、油耗管控、违规卸料预警与视频联动
+  https://www.xlhd.info/articles/ready-mix-concrete-transport-digital-supervision
 - 四川湖北景区客车改造：会车语音预警、到站大屏播报
   https://www.xlhd.info/articles/scenic-bus-meeting-warning-arrival-sichuan-hubei
 
 ## 技术文档（精选）
+- JT/T 808 多类型传感器接入：滚筒/门磁/温湿度/油杆/载重扩展报文与 1078 联动
+  https://www.xlhd.info/articles/jt808-multi-sensor-access-implementation
 - 北斗安心联油量智能监测：油杆/超声波双传感、油耗分析、偷油告警与 808 扩展
   https://www.xlhd.info/articles/anxinlian-vehicle-fuel-intelligent-monitoring
 - 北斗安心联高价值货运监控：芯片/名酒精密货品、门磁管控、808 定位与 1078 视频

@@ -305,7 +305,7 @@
         </div>
 
         <div class="text-center">
-          <NuxtLink :to="categoryToNewsHref('行业动态', { scrollToTabs: true })">
+          <NuxtLink :to="categoryToNewsHref('行业资讯', { scrollToTabs: true })">
             <button
               type="button"
               class="inline-flex items-center justify-center px-8 py-3 rounded-md border border-border bg-background hover:bg-muted transition-colors text-base font-medium"

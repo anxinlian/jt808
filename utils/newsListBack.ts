@@ -1,6 +1,6 @@
 /** 与 pages/news.vue 分类一致，用于 ?back= 与返回列表 */
 export const NEWS_ROUTE_CATEGORIES = [
-  '行业动态',
+  '行业资讯',
   '产品文档',
   '技术文档',
   '更新日志',
@@ -14,13 +14,13 @@ export function isNewsRouteCategory(s: string): s is NewsRouteCategory {
 }
 
 const CATEGORY_TO_SLUG: Record<Exclude<NewsRouteCategory, '更新日志'>, NewsCategorySlug> = {
-  行业动态: 'industry',
+  行业资讯: 'industry',
   产品文档: 'product-doc',
   技术文档: 'tech-doc',
 }
 
 const SLUG_TO_CATEGORY: Record<NewsCategorySlug, Exclude<NewsRouteCategory, '更新日志'>> = {
-  industry: '行业动态',
+  industry: '行业资讯',
   'product-doc': '产品文档',
   'tech-doc': '技术文档',
 }

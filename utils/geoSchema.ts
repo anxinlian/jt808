@@ -61,7 +61,7 @@ export function buildArticleJsonLd(input: ArticleJsonLdInput) {
   const articleType =
     input.category === '技术文档'
       ? 'TechArticle'
-      : input.category === '行业动态'
+      : input.category === '行业资讯'
         ? 'NewsArticle'
         : 'Article'
 

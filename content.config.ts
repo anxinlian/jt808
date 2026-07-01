@@ -10,7 +10,7 @@ export default defineContentConfig({
         id: z.string(),
         title: z.string(),
         summary: z.string(),
-        category: z.enum(['行业动态', '产品文档', '技术文档']),
+        category: z.enum(['行业资讯', '产品文档', '技术文档']),
         coverImage: z.string(),
         date: z.string(),
         featured: z.boolean(),

@@ -3,7 +3,7 @@ export interface ArticleListItem {
   id: string
   title: string
   summary: string
-  category: '行业动态' | '产品文档' | '技术文档'
+  category: '行业资讯' | '产品文档' | '技术文档'
   coverImage: string
   date: string
   featured: boolean
